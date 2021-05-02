@@ -39,7 +39,7 @@ namespace Promotion
             {
                 SKU_Item SKU_Item = new SKU_Item();
                 SKU_Item.SKU = SKU_List[i].ToString();
-                SKU_Item.price = rnd.Next(0, 100);
+                SKU_Item.price = rnd.Next(10, 100);
 
                 SKU_PriceList.Add(SKU_Item);
             }
@@ -144,22 +144,34 @@ namespace Promotion
 
         private void Select_SKU_For_Basket(object sender, EventArgs e)
         {
-            string SKU_Name = Combobox_SKU_List_For_Basket.SelectedItem.ToString();
-            SKU_Name = SKU_Name.Substring(0, 1);
-            SKUs_In_Basket.Add(SKU_Name);
-            SKUs_In_Basket = SKUs_In_Basket.OrderBy(x => x).ToList();
-
-            Label labelTmp = new Label();
-            labelTmp.Location = new Point(labelX, labelY);
-            labelTmp.Width = 180;
-            labelTmp.Text = String.Join(",", SKUs_In_Basket);
-
-            if (groupBox_Selected_SKUs_For_Basket.Controls.Count == 0)
-                groupBox_Selected_SKUs_For_Basket.Controls.Add(labelTmp);
-            else
+            string SKU_Name = "";
+            try
             {
-                Label labelCurrent = (Label)groupBox_Selected_SKUs_For_Basket.Controls[0];
-                labelCurrent.Text = labelTmp.Text;
+                SKU_Name = Combobox_SKU_List_For_Basket.SelectedItem.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Please select a SKU");
+                //throw new Exception("Please select a SKU");
+            }
+            if (SKU_Name != "")
+            {
+                SKU_Name = SKU_Name.Substring(0, 1);
+                SKUs_In_Basket.Add(SKU_Name);
+                SKUs_In_Basket = SKUs_In_Basket.OrderBy(x => x).ToList();
+
+                Label labelTmp = new Label();
+                labelTmp.Location = new Point(labelX, labelY);
+                labelTmp.Width = 180;
+                labelTmp.Text = String.Join(",", SKUs_In_Basket);
+
+                if (groupBox_Selected_SKUs_For_Basket.Controls.Count == 0)
+                    groupBox_Selected_SKUs_For_Basket.Controls.Add(labelTmp);
+                else
+                {
+                    Label labelCurrent = (Label)groupBox_Selected_SKUs_For_Basket.Controls[0];
+                    labelCurrent.Text = labelTmp.Text;
+                }
             }
         }
 
@@ -247,5 +259,22 @@ namespace Promotion
         {
             Combobox_SKU_For_Percentage.SelectedIndex = -1;
         }
+
+        private void textBox_Fixed_Value_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }             
+        }
+
+        private void textBox_Percentage_Value_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
     }
 }

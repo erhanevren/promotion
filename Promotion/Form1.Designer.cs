@@ -161,6 +161,7 @@
             this.textBox_Fixed_Value.Name = "textBox_Fixed_Value";
             this.textBox_Fixed_Value.Size = new System.Drawing.Size(42, 20);
             this.textBox_Fixed_Value.TabIndex = 12;
+            this.textBox_Fixed_Value.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Fixed_Value_KeyPress);
             // 
             // textBox_Percentage_Value
             // 
@@ -169,6 +170,7 @@
             this.textBox_Percentage_Value.Name = "textBox_Percentage_Value";
             this.textBox_Percentage_Value.Size = new System.Drawing.Size(42, 20);
             this.textBox_Percentage_Value.TabIndex = 11;
+            this.textBox_Percentage_Value.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Percentage_Value_KeyPress);
             // 
             // radioButton1
             // 
