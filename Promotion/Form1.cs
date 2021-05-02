@@ -25,16 +25,13 @@ namespace Promotion
 
         int labelX = 10;
         int labelY = 20;
-        int promotionNum = 0; 
+        int promotionNum = 0;
+        Promotion promotion = new Promotion();
 
         public Form1()
         {
             InitializeComponent();
 
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
             Random rnd = new Random();
             for (int i = 0; i < SKU_List.Length; i++)
             {
@@ -47,6 +44,7 @@ namespace Promotion
 
             for (int i = 0; i < SKU_List.Length; i++)
                 Combobox_SKU_List_For_Promotion.Items.Add(SKU_List[i]);
+
         }
 
         private void Select_SKU_For_Promotion(object sender, EventArgs e)
@@ -82,6 +80,8 @@ namespace Promotion
                 Unique_SKUs_In_A_New_Promotion.Add(SKU_Name);
                 Unique_SKUs_In_A_New_Promotion = Unique_SKUs_In_A_New_Promotion.OrderBy(x => x).Distinct().ToList();
 
+                Combobox_SKU_For_Percentage.Items.Clear();
+                Combobox_SKU_For_Percentage.Items.AddRange(Unique_SKUs_In_A_New_Promotion.ToArray());
             }
         }
 
@@ -89,7 +89,44 @@ namespace Promotion
         {
             SKU_List_In_A_New_Promotion.Clear();
             groupBox_Selected_SKUs_For_Promotion.Controls.Clear();
-            Unique_SKUs_In_A_New_Promotion.Clear(); 
+            Unique_SKUs_In_A_New_Promotion.Clear();
+            Combobox_SKU_For_Percentage.Items.Clear();
+            Combobox_SKU_For_Percentage.ResetText();
+            textBox_Fixed_Value.Text = "";
+            textBox_Percentage_Value.Text = "";
         }
+
+        private void Create_Promotion(object sender, EventArgs e)
+        {
+            string SKU_combined = String.Join(",", SKU_List_In_A_New_Promotion);
+
+            PromotionType promotionType = new PromotionType();
+            promotionType.SKU_percentage = (radioButton2.Checked) ? Combobox_SKU_For_Percentage.SelectedItem.ToString() : "";
+            promotionType.operand = (radioButton1.Checked) ? Convert.ToInt16(textBox_Fixed_Value.Text.ToString()) : Convert.ToInt16(textBox_Percentage_Value.Text.ToString());
+            promotionType.operatorType = (radioButton1.Checked) ? "static" : "%";
+            promotionType.operatorKey = SKU_List_In_A_New_Promotion.ToList();
+
+            promotion.PromotionList.Add(promotionType);
+
+            Label labelTmp = new Label();
+            labelTmp.Text = SKU_combined + " => " + promotionType.operatorType + " " + promotionType.operand + " " + promotionType.SKU_percentage;
+            labelTmp.Name = "promotion_" + promotionNum;
+            int val = 20 + promotionNum * 20;
+            labelTmp.Location = new Point(10, val);
+            labelTmp.Size = new Size(150, 15);
+
+            panel_Promotion_List.Controls.Add(labelTmp);
+            labelTmp = null;
+            promotionNum++;
+
+        }
+
+        private void Clear_Promotions(object sender, EventArgs e)
+        {
+            promotion.PromotionList.Clear();
+            panel_Promotion_List.Controls.Clear();
+            promotionNum = 0;
+        }
+          
     }
 }
