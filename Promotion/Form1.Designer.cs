@@ -267,12 +267,12 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(92, 203);
+            this.label9.Location = new System.Drawing.Point(92, 200);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(25, 13);
             this.label9.TabIndex = 24;
             this.label9.Text = "___";
-            // 
+             // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -285,12 +285,12 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 205);
+            this.label7.Location = new System.Drawing.Point(12, 202);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(76, 13);
             this.label7.TabIndex = 22;
             this.label7.Text = "Basket Total : ";
-            // 
+             // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -331,7 +331,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(10, 227);
+            this.button7.Location = new System.Drawing.Point(10, 224);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(186, 29);
             this.button7.TabIndex = 16;

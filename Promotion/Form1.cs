@@ -240,7 +240,8 @@ namespace Promotion
                     basket.BasketItemList.Add(item);
                 }
                 label8.Text = String.Join(",", basket.BasketItemList.Select(x => x.SKU).ToList());
-                label9.Text = basket.BasketItemList.Select(x => x.price).Sum().ToString();
+                label9.Text = String.Join(" + ", basket.BasketItemList.Select(x => x.price).ToList()) + " = " 
+                    + basket.BasketItemList.Select(x => x.price).Sum().ToString();
 
                 groupBox_Selected_SKUs_For_Basket.Controls.Clear();
                 SKUs_In_Basket.Clear();
@@ -275,6 +276,6 @@ namespace Promotion
                 e.Handled = true;
             }
         }
-
+ 
     }
 }
