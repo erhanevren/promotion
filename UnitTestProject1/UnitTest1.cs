@@ -29,5 +29,14 @@ namespace UnitTestProject1
 
             Assert.IsNotNull(promotion);
         }
+
+        [TestMethod]
+        public void TestMethod3()
+        {
+            Form1 ff = new Form1();
+            //Assert.ThrowsException<Exception>(() => ff.Select_SKU_For_Promotion(this, new EventArgs()));
+        }
+
+        
     }
 }
