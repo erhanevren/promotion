@@ -26,7 +26,7 @@ namespace Promotion
         int labelX = 10;
         int labelY = 20;
         int promotionNum = 0;
-        Promotion promotion = new Promotion();
+        PromotionObj promotion = new PromotionObj();
 
         public Form1()
         {
@@ -96,7 +96,7 @@ namespace Promotion
             textBox_Percentage_Value.Text = "";
         }
 
-        private void Create_Promotion(object sender, EventArgs e)
+        public void Create_Promotion(object sender, EventArgs e)
         {
             string SKU_combined = String.Join(",", SKU_List_In_A_New_Promotion);
 

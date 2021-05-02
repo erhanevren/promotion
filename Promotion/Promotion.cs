@@ -14,7 +14,7 @@ namespace Promotion
         public string SKU_percentage; // SKU name if percentage is selected
     }
 
-    public class Promotion
+    public class PromotionObj
     {
         public List<PromotionType> PromotionList = new List<PromotionType>();
          
