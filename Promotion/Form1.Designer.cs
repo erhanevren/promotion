@@ -71,6 +71,7 @@
             this.button2.TabIndex = 14;
             this.button2.Text = "Clear Selected SKUs";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Clear_Selected_SKUs_For_Promotion);
             // 
             // button1
             // 
@@ -80,12 +81,13 @@
             this.button1.TabIndex = 15;
             this.button1.Text = "Select SKU For Promotion";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Select_SKU_For_Promotion);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(637, 368);
+            this.ClientSize = new System.Drawing.Size(363, 257);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox_Selected_SKUs_For_Promotion);
             this.Controls.Add(this.Combobox_SKU_List_For_Promotion);
