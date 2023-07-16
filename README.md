@@ -15,5 +15,3 @@ The SKU list is loaded automatically and prices for SKUs are set randomly betwee
 2. More than 1 SKU can be selected for basket, eg. AAB, AAA, AEF, ABBC. They will be shown on "Selected SKUs For Basket" block as comma separated list.
 3. After "Create Basket" button is clicked, selected SKUs are loaded into the basket and the total (before any promotion is applied) will be calculated via the random assigned prices of the SKUs ( that are shown in the basket SKUs dropdown ).
 4. After "Apply Promotions" button is clicked, the created promotions on the left block will be applied one by one to the basket and the last total will be written in the result block. 
-
-Regards
